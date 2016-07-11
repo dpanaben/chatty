@@ -2,10 +2,15 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.3.0'
+ruby '2.3.1'
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+group :development do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg', '~> 0.18'
+end
 # Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
@@ -24,7 +29,7 @@ gem 'redis', '~> 3.0'
 
 
 
-group :production do 
+group :production do
   gem 'rails_12factor'
 end
 

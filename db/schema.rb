@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 4) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "chatrooms", force: :cascade do |t|
     t.string   "topic"
     t.datetime "created_at", null: false
@@ -31,8 +28,8 @@ ActiveRecord::Schema.define(version: 4) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "messages", ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+  add_index "messages", ["chatroom_id"], name: "index_messages_on_chatroom_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -40,6 +37,4 @@ ActiveRecord::Schema.define(version: 4) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "messages", "chatrooms"
-  add_foreign_key "messages", "users"
 end
